@@ -7,8 +7,40 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/styles.css" />
 </head>
+
 <body>
-    <div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a asp-area="" asp-controller="" asp-action="Index" class="navbar-brand">Bird 
+                Sightings Tracker</a>
+            </div>
+            <div class="navbar-collapse collapse pull-right">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+                    <li><a asp-area="" asp-controller="Question" asp-action="Index">Your Questions</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a>Hi:@User.Identity.Name!</a></li>
+                        <li>
+                            <form asp-controller="Account" asp-action="LogOff" method="post">
+                                <input type="submit" value="Log off" class="btn " />
+                            </form>
+                        </li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="LogOff">Log out</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
+                    }
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <br /><br /><br />
+    <div class="container body-content">
         @RenderBody()
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
