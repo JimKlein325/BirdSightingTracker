@@ -8,13 +8,28 @@
 
 <h2>Log in with your account</h2>
 <hr />
-@using (Html.BeginForm())
-{
-    @Html.LabelFor(m => m.Email)
-    @Html.TextBoxFor(m => m.Email)
-
-    @Html.LabelFor(m => m.Password)
-    @Html.PasswordFor(m => m.Password)
-
-    <input type="submit" value="Log in" class="btn btn-default" />
-}
+<form asp-controller="Account" asp-action="Login" method="post" class="form-horizontal" role="form">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Email" class="col-md-2 control-label"></label>
+        <div class="col-md-6">
+            <input asp-for="Email" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="col-md-2 control-label"></label>
+        <div class="col-md-6">
+            <input asp-for="Password" class="form-control"  type="password"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Log in" class="btn btn-default" />
+        </div>
+    </div>
+</form>
+<hr />
+<div class="col-md-offset-2 col-md-10">
+    <h3>Don't have an account?</h3>
+    <p><a asp-controller="Account" asp-action="Register">Register for free!</a></p>
+</div>
