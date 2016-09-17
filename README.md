@@ -1,6 +1,6 @@
 # Bird Sightings Tracker App
 
-#### .Net Capstone project: October, 2016
+#### .Net Capstone Project: October, 2016
 
 #### By Jim Klein
 
@@ -24,7 +24,7 @@ A user can add, edit and view bird sightings.  Additionally, they can analyaze a
 ## Technologies Used
 * Asp.Net Core    
 * Entity Framework Core
-* Bower to manage front-end dependencies (optimized for frontend packages like Bootstrap and jQuery).
+* Bower to manage front-end dependencies.
 * HTML, JavaScript, CSS, SASS
 * Bootstrap
 
