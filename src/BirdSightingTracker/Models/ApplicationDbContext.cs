@@ -10,6 +10,13 @@ namespace BirdSightingTracker.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+        public DbSet<Bird> Birds { get; set; }
+
+        public DbSet<Sighting> Sightings { get; set; }
+
+        public DbSet<Place> Places { get; set; }
+
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 

@@ -8,9 +8,10 @@ using BirdSightingTracker.Models;
 namespace BirdSightingTracker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160917032532_AddModelItems")]
+    partial class AddModelItems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -63,100 +64,6 @@ namespace BirdSightingTracker.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("BirdSightingTracker.Models.Bird", b =>
-                {
-                    b.Property<int>("BirdId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CommonName");
-
-                    b.Property<string>("ConservationCode");
-
-                    b.Property<string>("ConservationStatus");
-
-                    b.Property<string>("Family");
-
-                    b.Property<double>("Length");
-
-                    b.Property<string>("PrimaryColor");
-
-                    b.Property<string>("ScientificName");
-
-                    b.Property<string>("SecondaryColor");
-
-                    b.Property<string>("Size");
-
-                    b.Property<double>("Weight");
-
-                    b.Property<double>("Width");
-
-                    b.HasKey("BirdId");
-
-                    b.ToTable("Birds");
-                });
-
-            modelBuilder.Entity("BirdSightingTracker.Models.BirdColor", b =>
-                {
-                    b.Property<int>("ColorId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("BirdId");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("ColorId");
-
-                    b.HasIndex("BirdId");
-
-                    b.ToTable("BirdColor");
-                });
-
-            modelBuilder.Entity("BirdSightingTracker.Models.Place", b =>
-                {
-                    b.Property<int>("PlaceId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("BirdId");
-
-                    b.Property<string>("City");
-
-                    b.Property<string>("Climate");
-
-                    b.Property<string>("Country");
-
-                    b.Property<string>("TerrainType");
-
-                    b.HasKey("PlaceId");
-
-                    b.HasIndex("BirdId");
-
-                    b.ToTable("Places");
-                });
-
-            modelBuilder.Entity("BirdSightingTracker.Models.Sighting", b =>
-                {
-                    b.Property<int>("SightingId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("BirdId");
-
-                    b.Property<string>("ObserverFirstName");
-
-                    b.Property<string>("ObserverLastName");
-
-                    b.Property<int?>("PlaceId");
-
-                    b.Property<DateTime>("SightingDate");
-
-                    b.HasKey("SightingId");
-
-                    b.HasIndex("BirdId");
-
-                    b.HasIndex("PlaceId");
-
-                    b.ToTable("Sightings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -264,31 +171,6 @@ namespace BirdSightingTracker.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("BirdSightingTracker.Models.BirdColor", b =>
-                {
-                    b.HasOne("BirdSightingTracker.Models.Bird")
-                        .WithMany("TertiaryColors")
-                        .HasForeignKey("BirdId");
-                });
-
-            modelBuilder.Entity("BirdSightingTracker.Models.Place", b =>
-                {
-                    b.HasOne("BirdSightingTracker.Models.Bird")
-                        .WithMany("Habitats")
-                        .HasForeignKey("BirdId");
-                });
-
-            modelBuilder.Entity("BirdSightingTracker.Models.Sighting", b =>
-                {
-                    b.HasOne("BirdSightingTracker.Models.Bird", "Bird")
-                        .WithMany("Sightings")
-                        .HasForeignKey("BirdId");
-
-                    b.HasOne("BirdSightingTracker.Models.Place", "Place")
-                        .WithMany()
-                        .HasForeignKey("PlaceId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
