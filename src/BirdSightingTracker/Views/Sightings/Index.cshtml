@@ -1,0 +1,13 @@
+﻿@model IEnumerable<BirdSightingTracker.Models.Sighting>
+@{
+    ViewData["Title"] = "To Do List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sightings</h2>
+<ul>
+    @foreach (var sighting in Model)
+    {
+        <li>Bird:  @sighting.Bird.CommonName</li>
+    }
+</ul>
