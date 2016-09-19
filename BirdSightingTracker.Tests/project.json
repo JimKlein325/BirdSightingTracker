@@ -1,11 +1,12 @@
-﻿{
+{
   "version": "1.0.0-*",
   "testRunner": "xunit",
   "dependencies": {
     "NETStandard.Library": "1.6.0",
     "xunit": "2.1.0",
     "dotnet-test-xunit": "1.0.0-rc2-build10025",
-    "BirdSightingTracker": "1.0.0-*"
+    "BirdSightingTracker": "1.0.0-*",
+    "System.Diagnostics.TraceSource": "4.0.0"
   },
 
   "frameworks": {
@@ -18,7 +19,9 @@
       "dependencies": {
         "Microsoft.NETCore.App": {
           "type": "platform",
-          "version": "1.0.0"
+          "version": "1.0.0",
+          "moq.netcore": "4.4.0-beta8",
+          "System.Diagnostics.TraceSource": "4.0.0-rc2-24027"
         }
       }
     }

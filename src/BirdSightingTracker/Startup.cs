@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using BirdSightingTracker.Models;
+using BirdSightingTracker.Models.BSRepository;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace BirdSightingTracker
@@ -34,6 +35,10 @@ namespace BirdSightingTracker
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddScoped<IBSRepository, BSRepository>();
+            
+
         }        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
