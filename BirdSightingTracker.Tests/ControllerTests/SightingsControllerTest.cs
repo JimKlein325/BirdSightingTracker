@@ -53,7 +53,7 @@ namespace BirdSightingTracker.Tests.ControllerTests
             var result = indexView.ViewData.Model;
 
             //Assert
-            Assert.IsType<IEnumerable<Sighting>>(result);
+            Assert.IsType<List<Sighting>>(result);
         }
 
     }
