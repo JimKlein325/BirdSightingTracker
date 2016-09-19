@@ -6,6 +6,6 @@ namespace BirdSightingTracker.Models.BSRepository
 {
     public interface IBSRepository
     {
-        IQueryable<Sighting> Sightings { get; set; }
+        List<Sighting> Sightings { get; set; }
     }
 }

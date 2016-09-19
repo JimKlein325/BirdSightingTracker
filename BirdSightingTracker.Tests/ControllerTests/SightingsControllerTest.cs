@@ -25,8 +25,8 @@ namespace BirdSightingTracker.Tests.ControllerTests
             mock.Setup(m => m.Sightings).Returns(new Sighting[]
             {
                 new Sighting { Bird = new Bird { CommonName = "Portland Swift" }, ObserverFirstName = "Bob", ObserverLastName = "Smith", Place = new Place { City = "Portland" }, SightingDate = DateTime.Now, SightingId = 1 }
-                
-            }.AsQueryable());
+
+            }.ToList());//AsQueryable());
             var controller = new SightingsController(mock.Object);
 
             //Act
@@ -35,7 +35,26 @@ namespace BirdSightingTracker.Tests.ControllerTests
             //Assert
             Assert.IsType<ViewResult>(result);
         }
+        [Fact]
+        public void Get_ModelList_Index_Test()
+        {
+            //Arrange
+            Mock<IBSRepository> mock = new Mock<IBSRepository>();
+            mock.Setup(m => m.Sightings).Returns(new Sighting[]
+            {
+                new Sighting { Bird = new Bird { CommonName = "Portland Swift" }, ObserverFirstName = "Bob", ObserverLastName = "Smith", Place = new Place { City = "Portland" }, SightingDate = DateTime.Now, SightingId = 1 }
 
+            }.ToList());//AsQueryable());
+            var controller = new SightingsController(mock.Object);
+            IActionResult actionResult = controller.Index();
+            ViewResult indexView = controller.Index() as ViewResult;
+
+            //Act
+            var result = indexView.ViewData.Model;
+
+            //Assert
+            Assert.IsType<IEnumerable<Sighting>>(result);
+        }
 
     }
 }
