@@ -4,10 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Sightings</h2>
+<h2>Sightings by Observer</h2>
 <ul>
     @foreach (var sighting in Model)
     {
-        <li>Bird:  @sighting.Bird.CommonName</li>
+        <li>Observer Name:  @sighting.ObserverFirstName @sighting.ObserverLastName</li>
     }
 </ul>

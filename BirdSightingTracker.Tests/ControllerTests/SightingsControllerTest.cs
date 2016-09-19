@@ -35,5 +35,7 @@ namespace BirdSightingTracker.Tests.ControllerTests
             //Assert
             Assert.IsType<ViewResult>(result);
         }
+
+
     }
 }

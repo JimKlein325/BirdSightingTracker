@@ -10,7 +10,14 @@ namespace BirdSightingTracker.Models.BSRepository
     public class BSRepository: IBSRepository
     {
         private ApplicationDbContext _db;
-        public IQueryable<Sighting> Sightings { get; set; }
+        public IQueryable<Sighting> Sightings
+        {
+            get
+            {
+                return _db.Sightings;
+            }
+            set { }
+        }
 
         public BSRepository(ApplicationDbContext context)
         {
