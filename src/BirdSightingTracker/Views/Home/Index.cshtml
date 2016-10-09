@@ -1,6 +1,16 @@
-﻿@{
+﻿@model IEnumerable<BirdSightingTracker.ViewModels.IndexViewModel>
+@{
     ViewData["Title"] = "World Bird Sighting Tracker";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Welcome!</h2>
+<div>
+    <h2>Welcome!</h2>
+    <ul>
+        @foreach (var sighting in Model)
+        {
+            <li>@sighting.CommonName, @sighting.SightingDate.ToString()</li>
+        }
+    </ul>
+
+</div>     
 
